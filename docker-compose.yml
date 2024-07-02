@@ -19,6 +19,8 @@ services:
       context: ./morasha
       dockerfile: Dockerfile
     restart: always
+    depends_on:
+      - 'mariabd'
     environment:
       - DJANGO_SUPERUSER_PASSWORD=morasha
       - DJANGO_SUPERUSER_USERNAME=morasha
