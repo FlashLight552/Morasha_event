@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<body>
+    <div class='body'>
+        <div class='logo'>
+            <img src="{%static 'IMG_0262.PNG' %}" class='logo-img' alt="">
+        </div>
+        <div class='header-text'>
+            Добро пожаловать на увлекательную игру НеЗавершении сезона 2023-2024!
+             {% comment %} {% if username %} {{username}} {% endif %} {% endcomment %}
+        </div>
+
+        {% if username%}
+        <div class='event-text'>Спасибо {{username}}, ты зарегистрировался и теперь учавствуешь в лучшем ивенте этого сезона!   
+        </div>
+        {% else %}
+        <div class='event-text'>
+            Тебя ждет интерактивное путешествие по нашей локации, где ты будешь находить точки с  QR-кодами и сканировать их, чтобы увидеть загадку. Твоя цель - пройти по всем точкам и отгадать как можно больше загадок.<br>
+            <br>
+            <b>Правила игры: </b>
+        </div>
+        <div class='event-text2'>
+            - На каждой точке ты найдешь QR-код, который нужно отсканировать с помощью твоего смартфона.<br>
+            - На первом QR-коде введи своё настоящее имя (смешные названия и псевдонимы не будут учитываться в прохождении игры) <br>
+            - Загадки могут быть на любую тему еврейской традиции и истории, так что будьть готовым к неожиданностям!<br>
+            - Под каждой загадкой будет строка, где нужно написать ответ. После этого нажми  "отправить" и  переходи к следующей точке.  <br> 
+        </div>
+        {% endif %}
+
+
+        {% if not username %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {% comment %} <label for="your_name">Твое имя: </label> {% endcomment %}
+            <input class="your_name" id="your_name" type="text" name="your_name" placeholder="Введи свое имя" value="{{ current_name }}">
+            {% if name_already_used %}
+            <div class='name_already_used'>Испульзуй другое имя, это уже занято.</div>
+            {% endif %}
+            <div class='submit-btn-div'><input type="submit" class="submit-btn" value="Поехали"></div>
+        </form>
+        {% endif %}
+
+    </div>
+</body>
+</html>

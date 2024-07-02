@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+
+</head>
+<body>
+    <div class='body'>
+        
+        <div class='space'>
+        </div>
+
+    {% if complete %}
+    <div class='header-text'>{{username}}, спасибо за ответ, засчитано!</div>
+        <img class="thumbs-up" src="{% static 'thumbs-up.gif' %}" alt="">
+    {% else %}
+    <div>
+        <div class='header-text'>
+            {{question_name}}
+        </div>
+
+        <div class='event-text' >
+            {{question}}
+        </div>
+
+        <div>
+            <form action="" method="post">
+                {% csrf_token %}
+                {% comment %} <label for="answer">Ответ: </label> {% endcomment %}
+                <input class='answer' id="answer" type="text" name="answer" placeholder="Твой ответ?" value="{{ answer }}">
+                <input type="hidden" id="question_name" name="question_name" value="{{ question_name }}">
+                <input type="hidden" id="question" name="question" value="{{ question }}">
+                <div class='submit-btn-div'> <input type="submit"  class="submit-btn" value="Отправить"> </dir>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
