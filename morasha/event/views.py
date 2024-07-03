@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import EventUsers, Questions, Answers
+from django.http import HttpResponse
 
 
 def index(request):
@@ -84,3 +85,9 @@ def result(request):
     context = {"model": q,}
     
     return render(request, "result.html", context)
+
+def restore(request, pk):
+    if EventUsers.objects.filter(user_id = pk):
+        response = HttpResponse('Готово')
+        response.set_cookie('event_user_id', pk)
+        return response
