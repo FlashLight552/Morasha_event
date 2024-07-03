@@ -91,3 +91,4 @@ def restore(request, pk):
         response = HttpResponse('Готово')
         response.set_cookie('event_user_id', pk)
         return response
+    return HttpResponse('Неверный id')
