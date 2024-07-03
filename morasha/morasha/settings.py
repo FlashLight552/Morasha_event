@@ -134,6 +134,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'event/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'event/staticfiles')
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
