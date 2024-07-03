@@ -17,10 +17,14 @@ def index(request):
             response = render(request, "index.html", context)
             response.set_cookie('event_user_id', q.user_id)
             return response
-        
-        context = {"name_already_used": True}
 
-        return render(request, "index.html", context)
+
+        try:
+            request.COOKIES['event_user_id']
+            return redirect('/')
+        except KeyError:
+            context = {"name_already_used": True}
+            return render(request, "index.html", context)
 
     try:
         username = request.COOKIES['event_user_id']
@@ -33,6 +37,7 @@ def index(request):
         "username": username,
     }
     return render(request, "index.html", context)
+    # return render('/')
 
 def quest(request, pk):
     try:
@@ -79,4 +84,3 @@ def result(request):
     context = {"model": q,}
     
     return render(request, "result.html", context)
-

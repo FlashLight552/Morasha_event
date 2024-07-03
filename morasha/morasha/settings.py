@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-qo!vnbbxdkh^pv(!mlhn1!n881g9)yba8)6)cw))gl+3u*a$wc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -74,23 +75,23 @@ WSGI_APPLICATION = 'morasha.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    "default": {
-    "ENGINE": "django.db.backends.mysql",
-    "NAME": "morasha",
-    "USER":"morasha",
-    "PASSWORD":"morasha",
-    "HOST":"mariabd",
-    "PORT":"3306",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     "default": {
+#     "ENGINE": "django.db.backends.mysql",
+#     "NAME": "morasha",
+#     "USER":"morasha",
+#     "PASSWORD":"morasha",
+#     "HOST":"mariabd",
+#     "PORT":"3306",
+#     }
+# }
 
 
 # Password validation
@@ -128,6 +129,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'event/static')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'event/staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
