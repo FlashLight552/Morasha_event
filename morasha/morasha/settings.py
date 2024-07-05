@@ -141,4 +141,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'event/staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
-CSRF_TRUSTED_ORIGINS = [['https://*.flashlight.pp.ua','https://*.127.0.0.1', 'http://*.flashlight.pp.ua','http://*.127.0.0.1']]
+CSRF_TRUSTED_ORIGINS = ['https://*.flashlight.pp.ua','https://*.127.0.0.1', 'http://*.flashlight.pp.ua','http://*.127.0.0.1']
